@@ -101,3 +101,7 @@
 
 <input type="checkbox" id="vitoria-item" />
 <label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label>
+
+<b>Ajustes Extras Confronto:</b>
+<label for="confronto">Sortear aleatóriamente se é um casco (-1 ponto) e se for uma bomba (-2 pontos)</label>
+<label for="confronto">Quem vencer o confronto ganha turbo (+1 ponto) aleatóriamente </label>

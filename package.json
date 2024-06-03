@@ -1,0 +1,13 @@
+{
+  "name": "primeiro-projeto-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dnao": "echo \"ok aqui\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Denis Cunha",
+  "license": "ISC",
+  "description": "My First Project DIO Nodenpm run JS"
+}

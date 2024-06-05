@@ -19,6 +19,10 @@ async function rollDice() {
 }
 
 
+async function powerExtra() {
+    return Math.floor(Math.random()*2);
+}
+
 async function logRollResult(characterName, block, diceResult, attribute) {
     console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${diceResult + attribute}`);
 
@@ -30,8 +34,10 @@ for (let round = 1 ; round <= 5; round ++) {
     let block = await getRandomBlock();
     console.log(`Bloco: ${block} `);
 
-    let diceResult1 = await rollDice();
+let diceResult1 = await rollDice();
 let diceResult2 = await rollDice();
+let powerp1 = await powerExtra();
+let powerp2 = await powerExtra();
 
 
 let totalTestSkill1 = 0;
@@ -54,6 +60,8 @@ if (block === "Curva") {
 if (block === "Confronto") {
     let powerResult1 = diceResult1 + character1.PODER;
     let powerResult2 = diceResult2 + character2.PODER;
+    let powerResult3 = powerp1;
+    let powerResult4 = powerp2;
 
     console.log(`${character1.NOME} Confrontou com ${character2.NOME}! 🥊`);
 
@@ -68,6 +76,20 @@ if (block === "Confronto") {
     if (powerResult2 > powerResult1 && character1.PONTOS > 0) {
         console.log(`${character2.NOME} Venceu o Confronto! ${character1.NOME} Perdeu um Ponto 🍄`);
         character1.PONTOS --;
+    }
+
+    if (powerResult3 > powerResult4) {
+        console.log(`${character1.NOME} Recebeu um ponto Extra ♥`);
+        character1.PONTOS ++;
+    }
+
+    if (powerResult4 > powerResult3) {
+        console.log(`${character2.NOME} Recebeu um ponto Extra ♥`);
+        character2.PONTOS ++;
+    }
+
+    if (powerResult4 === powerResult3) {
+        console.log("Nenhum jogador recebeu pontos extras!");
     }
 
    // character2.PONTOS -= powerResult1 > powerResult2 && character2.PONTOS > 0 ? 1 : 0;
@@ -108,7 +130,7 @@ async function getRandomBlock() {
    return result;
 }
 
-async function declareWinner( character1, character2) {
+async function declareWinner(character1, character2) {
     console.log("Resultado Final: \n");
     console.log(`${character1.NOME} : ${character1.PONTOS} ponto(s)`);
     console.log(`${character2.NOME} : ${character2.PONTOS} ponto(s)`);
@@ -126,5 +148,6 @@ async function declareWinner( character1, character2) {
     console.log(`🏁 🚗 Começou a Corrida entre ${player1.NOME}  e ${player2.NOME} \n`);
     await playRaceEngine(player1, player2);
     await declareWinner(player1, player2);
+
 })();
 
